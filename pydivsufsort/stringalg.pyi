@@ -1,9 +1,9 @@
-from typing import Iterable, Iterator, Sequence, Tuple
+from typing import Any, Iterable, Iterator, Sequence, Tuple
 
-import numpy as np
+from numpy.typing import NDArray
 
-def _kasai(s: np.ndarray, sa: np.ndarray) -> np.ndarray: ...
-def _kasai_bytes(s: bytes, sa: np.ndarray) -> np.ndarray:
+def _kasai(s: NDArray[Any], sa: NDArray[Any]) -> NDArray[Any]: ...
+def _kasai_bytes(s: bytes, sa: NDArray[Any]) -> NDArray[Any]:
     """
     Same as _kasai but with a const first argument.
 
@@ -13,64 +13,70 @@ def _kasai_bytes(s: bytes, sa: np.ndarray) -> np.ndarray:
     """
     ...
 
-def kasai(s: str | bytes | np.ndarray, sa: object = None) -> np.ndarray: ...
+def kasai(
+    s: str | bytes | NDArray[Any], sa: NDArray[Any] | None = None
+) -> NDArray[Any]: ...
 def _lcp_segtree(
-    s: np.ndarray,
-    sa: np.ndarray,
-    lcp: np.ndarray,
-) -> tuple[np.ndarray, np.ndarray]: ...
+    s: NDArray[Any],
+    sa: NDArray[Any],
+    lcp: NDArray[Any],
+) -> tuple[NDArray[Any], NDArray[Any]]: ...
 def lcp_segtree(
-    s: str | bytes | np.ndarray,
-    sa: object = None,
-    lcp: object = None,
-) -> tuple[np.ndarray, np.ndarray]: ...
+    s: str | bytes | NDArray[Any],
+    sa: NDArray[Any] | None = None,
+    lcp: NDArray[Any] | None = None,
+) -> tuple[NDArray[Any], NDArray[Any]]: ...
 def _lcp_query(
-    rank: np.ndarray,
-    segtree: np.ndarray,
+    rank: NDArray[Any],
+    segtree: NDArray[Any],
     queries: Sequence[Tuple[int, int]],
-) -> np.ndarray: ...
+) -> NDArray[Any]: ...
 def lcp_query(
-    segtree: tuple[np.ndarray, np.ndarray],
+    segtree: tuple[NDArray[Any], NDArray[Any]],
     queries: Sequence[Tuple[int, int]],
-) -> np.ndarray: ...
-def _levenshtein(a: np.ndarray, b: np.ndarray) -> int: ...
-def levenshtein(a: str | bytes | np.ndarray, b: str | bytes | np.ndarray) -> int: ...
+) -> NDArray[Any]: ...
+def _levenshtein(a: NDArray[Any], b: NDArray[Any]) -> int: ...
+def levenshtein(
+    a: str | bytes | NDArray[Any], b: str | bytes | NDArray[Any]
+) -> int: ...
 def most_frequent_substrings(
-    lcp: np.ndarray,
+    lcp: NDArray[Any],
     length: int,
     limit: int = 0,
     minimum_count: int = 1,
-) -> tuple[np.ndarray, np.ndarray]: ...
+) -> tuple[NDArray[Any], NDArray[Any]]: ...
 def repeated_substrings(
-    suffix_array: np.ndarray,
-    lcp: np.ndarray,
+    suffix_array: NDArray[Any],
+    lcp: NDArray[Any],
 ) -> list[tuple[int, int, int]]: ...
 def _common_substrings(
-    suffix_array: np.ndarray,
-    lcp: np.ndarray,
+    suffix_array: NDArray[Any],
+    lcp: NDArray[Any],
     len1: int,
     limit: int,
 ) -> list[tuple[int, int, int]]: ...
-def _min_rotation(s: bytes | np.ndarray) -> int: ...
-def _min_rotation_bytes(s: bytes | np.ndarray) -> int: ...
-def min_rotation(s: str | bytes | np.ndarray) -> int: ...
+def _min_rotation(s: bytes | NDArray[Any]) -> int: ...
+def _min_rotation_bytes(s: bytes | NDArray[Any]) -> int: ...
+def min_rotation(s: str | bytes | NDArray[Any]) -> int: ...
 def _longest_previous_factor(
-    s: str | bytes | np.ndarray,
-    sa: np.ndarray,
-    lcp: np.ndarray,
-) -> np.ndarray: ...
+    s: str | bytes | NDArray[Any],
+    sa: NDArray[Any],
+    lcp: NDArray[Any],
+) -> NDArray[Any]: ...
 def longest_previous_factor(
-    s: str | bytes | np.ndarray,
-    sa: np.ndarray | None = None,
-    lcp: np.ndarray | None = None,
-) -> np.ndarray: ...
+    s: str | bytes | NDArray[Any],
+    sa: NDArray[Any] | None = None,
+    lcp: NDArray[Any] | None = None,
+) -> NDArray[Any]: ...
 def lempel_ziv_factorization(
-    lpf: np.ndarray, complexity: bool = False
+    lpf: NDArray[Any], complexity: bool = False
 ) -> list[int]: ...
-def _lempel_ziv_complexity(s: np.ndarray, sa: np.ndarray, lcp: np.ndarray) -> int: ...
+def _lempel_ziv_complexity(
+    s: NDArray[Any], sa: NDArray[Any], lcp: NDArray[Any]
+) -> int: ...
 def lempel_ziv_complexity(
-    s: str | bytes | np.ndarray,
-    sa: np.ndarray | None = ...,
-    lcp: np.ndarray | None = ...,
+    s: str | bytes | NDArray[Any],
+    sa: NDArray[Any] | None = ...,
+    lcp: NDArray[Any] | None = ...,
 ) -> int: ...
 def kmp_censor_stream(censor: str, stream: Iterable[str]) -> Iterator[str]: ...
