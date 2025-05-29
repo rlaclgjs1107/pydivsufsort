@@ -14,7 +14,7 @@ mkdir tempbuild
 cd tempbuild
 
 REM Run CMake configuration
-cmake -G "NMake Makefiles" -DBUILD_DIVSUFSORT64=ON -DBUILD_EXAMPLES=OFF -DUSE_OPENMP=ON ..\libdivsufsort
+cmake -G "MinGW Makefiles" -DBUILD_DIVSUFSORT64=ON -DBUILD_EXAMPLES=OFF -DUSE_OPENMP=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..\libdivsufsort
 
 REM Build
 cmake --build . --config Release
