@@ -39,10 +39,10 @@ except ImportError:
 class CustomBuildPy(build_py):
     def run(self):
         if platform.system() == "Windows":
-            script = Path(__file__).parent / "build.sh"
+            script = Path(__file__).parent / "build.bat"
             path = script.absolute().as_posix()
             try:
-                subprocess.check_call(f"bash {path}", shell=True)
+                subprocess.check_call(path, shell=True)
             except subprocess.CalledProcessError as e:
                 print(f"Error running build script: {e}")
                 raise
