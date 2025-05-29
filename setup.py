@@ -108,6 +108,8 @@ setup(
             # windows
             "divsufsort.dll",
             "divsufsort64.dll",
+            # stringalg stub
+            "stringalg.pyi",
         ]
     },
     ext_modules=cythonize(extensions),
