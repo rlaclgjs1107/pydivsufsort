@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy
 from Cython.Build import cythonize
 from setuptools import Extension, setup
-from setuptools.command.build_py import build_py
+from setuptools.command.build_ext import build_ext
 
 PROFILE = os.environ.get("PROFILE", False)
 
@@ -36,7 +36,7 @@ except ImportError:
     bdist_wheel = None
 
 
-class CustomBuildPy(build_py):
+class CustomBuildExt(build_ext):
     def run(self):
         if platform.system() == "Windows":
             script = Path(__file__).parent / "build.bat"
@@ -117,5 +117,5 @@ setup(
     install_requires=["wheel", "numpy"],
     tests_require=["pytest"],
     classifiers=[],
-    cmdclass={"build_py": CustomBuildPy, "bdist_wheel": bdist_wheel},
+    cmdclass={"build_ext": CustomBuildExt, "bdist_wheel": bdist_wheel},
 )
