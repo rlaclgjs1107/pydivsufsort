@@ -23,8 +23,8 @@ cd ..
 
 REM Find two largest files and move to pydivsufsort
 REM (There’s no direct ‘du -s | sort’ in cmd, so do it statically for now)
-copy tempbuild\libdivsufsort64.dll pydivsufsort\
-copy tempbuild\libdivsufsort.dll pydivsufsort\
+copy tempbuild\examples\libdivsufsort64.dll pydivsufsort\
+copy tempbuild\examples\libdivsufsort.dll pydivsufsort\
 
 REM Clean up
 rmdir /s /q tempbuild
