@@ -9,8 +9,8 @@ if platform.system() == "Windows":
     def find_dll(x):
         return str(next(PATH.glob(x)))
 
-    PATH_LIBDIVSUFSORT = find_dll("divsufsort.dll")
-    PATH_LIBDIVSUFSORT64 = find_dll("divsufsort64.dll")
+    PATH_LIBDIVSUFSORT = find_dll("libdivsufsort.dll")
+    PATH_LIBDIVSUFSORT64 = find_dll("libdivsufsort64.dll")
 else:
     PATH_LIBDIVSUFSORT = next(PATH.glob("libdivsufsort.*"))
     PATH_LIBDIVSUFSORT64 = next(PATH.glob("libdivsufsort64.*"))
