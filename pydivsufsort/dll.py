@@ -1,8 +1,21 @@
-from pathlib import Path
 import ctypes
+import os
 import platform
+from pathlib import Path
 
 PATH = Path(__file__).parent
+
+
+def try_add_mingw_dll_dirs():
+    for p in os.environ["PATH"].split(os.pathsep):
+        path = Path(p)
+        if (path / "libgomp-1.dll").exists():
+            os.add_dll_directory(str(path))
+            return
+
+
+if os.name == "nt":
+    try_add_mingw_dll_dirs()
 
 if platform.system() == "Windows":
 
